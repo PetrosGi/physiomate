@@ -1,0 +1,29 @@
+<section id="workflow" class="workflow-section pf-section">
+  <div class="pf-section__inner">
+    <div class="pf-section__header workflow-section__header">
+      <span class="pf-eyebrow">{{ bundle().workflowSection.eyebrow }}</span>
+      <h2 class="pf-heading pf-heading--lg">{{ bundle().workflowSection.title }}</h2>
+      <p class="pf-copy">
+        {{ bundle().workflowSection.description }}
+      </p>
+    </div>
+
+    <div class="workflow-section__timeline">
+      <article
+        *ngFor="let step of bundle().workflow; trackBy: trackByStep"
+        class="workflow-section__step"
+        [class]="'workflow-section__step workflow-section__step--' + step.accent"
+      >
+        <div class="workflow-section__step-marker">
+          <span class="workflow-section__step-number">{{ step.step }}</span>
+          <i [class]="step.icon"></i>
+        </div>
+
+        <div class="workflow-section__step-copy">
+          <h3 class="pf-heading pf-heading--md">{{ step.title }}</h3>
+          <p class="pf-copy">{{ step.description }}</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

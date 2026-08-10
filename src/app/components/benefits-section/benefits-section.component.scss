@@ -1,0 +1,57 @@
+:host {
+  display: block;
+}
+
+.benefits-section {
+  background: linear-gradient(180deg, rgba(237, 244, 255, 0.48), rgba(255, 255, 255, 0.82));
+}
+
+.benefits-section__header {
+  text-align: center;
+  justify-items: center;
+}
+
+.benefits-section__header p {
+  max-width: 40rem;
+}
+
+.benefits-section__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.benefits-section__card,
+.benefits-section__copy-block {
+  display: grid;
+  gap: 1rem;
+}
+
+.benefits-section__card {
+  padding: 1.35rem;
+}
+
+.benefits-section__card-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.benefits-section__icon-pill--primary {
+  color: var(--pf-color-primary-strong);
+}
+
+.benefits-section__icon-pill--secondary {
+  color: var(--pf-color-secondary);
+}
+
+.benefits-section__icon-pill--tertiary {
+  color: var(--pf-color-tertiary);
+}
+
+@media (max-width: 1080px) {
+  .benefits-section__grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,107 @@
+<header class="site-header">
+  <div class="site-header__bar pf-card pf-section__inner">
+    <button
+      pButton
+      type="button"
+      class="p-button-text p-button-rounded site-header__menu-toggle"
+      [attr.aria-label]="bundle().header.openMenuAriaLabel"
+      (click)="mobileNavVisible.set(true)"
+    >
+      <i class="pi pi-bars"></i>
+    </button>
+
+    <button type="button" class="site-header__brand" (click)="scrollToSection('home')">
+      <span class="site-header__brand-mark">
+        <i class="pi pi-heart-fill"></i>
+      </span>
+      <span>{{ bundle().brandName }}</span>
+    </button>
+
+    <nav class="site-header__nav" [attr.aria-label]="bundle().header.navigationAriaLabel">
+      <a
+        *ngFor="let link of bundle().navLinks"
+        class="site-header__link"
+        [href]="'#' + link.fragment"
+        (click)="onNavClick($event, link.fragment)"
+      >
+        {{ link.label }}
+      </a>
+    </nav>
+
+    <div class="site-header__actions">
+      <div class="site-header__locale-switch" role="group" [attr.aria-label]="bundle().header.localeSwitcherAriaLabel">
+        <button
+          *ngFor="let locale of locales"
+          type="button"
+          class="site-header__locale-button"
+          [class.site-header__locale-button--active]="currentLocale() === locale"
+          (click)="setLocale(locale)"
+        >
+          {{ bundle().header.localeLabels[locale] }}
+        </button>
+      </div>
+
+      <button pButton type="button" class="site-header__cta" (click)="scrollToSection('early-access')">
+        {{ bundle().header.primaryCtaLabel }}
+      </button>
+    </div>
+  </div>
+
+  <p-sidebar
+    position="right"
+    [modal]="true"
+    [dismissible]="true"
+    [showCloseIcon]="false"
+    styleClass="pf-mobile-sidebar"
+    [visible]="mobileNavVisible()"
+    (visibleChange)="mobileNavVisible.set($event)"
+  >
+    <div class="site-header__mobile-panel">
+      <div class="site-header__mobile-topbar">
+        <div class="site-header__brand site-header__brand--sidebar">
+          <span class="site-header__brand-mark">
+            <i class="pi pi-heart-fill"></i>
+          </span>
+          <span>{{ bundle().brandName }}</span>
+        </div>
+
+        <button
+          pButton
+          type="button"
+          class="p-button-text p-button-rounded"
+          [attr.aria-label]="bundle().header.closeMenuAriaLabel"
+          (click)="mobileNavVisible.set(false)"
+        >
+          <i class="pi pi-times"></i>
+        </button>
+      </div>
+
+      <nav class="site-header__mobile-nav" [attr.aria-label]="bundle().header.mobileNavigationAriaLabel">
+        <a
+          *ngFor="let link of bundle().navLinks"
+          class="site-header__mobile-link"
+          [href]="'#' + link.fragment"
+          (click)="onNavClick($event, link.fragment)"
+        >
+          {{ link.label }}
+        </a>
+      </nav>
+
+      <div class="site-header__locale-switch site-header__locale-switch--mobile" role="group" [attr.aria-label]="bundle().header.localeSwitcherAriaLabel">
+        <button
+          *ngFor="let locale of locales"
+          type="button"
+          class="site-header__locale-button"
+          [class.site-header__locale-button--active]="currentLocale() === locale"
+          (click)="setLocale(locale)"
+        >
+          {{ bundle().header.localeLabels[locale] }}
+        </button>
+      </div>
+
+      <button pButton type="button" class="site-header__mobile-cta" (click)="scrollToSection('early-access')">
+        {{ bundle().header.mobilePrimaryCtaLabel }}
+      </button>
+    </div>
+  </p-sidebar>
+</header>

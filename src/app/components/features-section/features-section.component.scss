@@ -1,0 +1,129 @@
+:host {
+  display: block;
+}
+
+.features-section {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.38), rgba(235, 244, 255, 0.8));
+}
+
+.features-section__header {
+  text-align: center;
+  justify-items: center;
+}
+
+.features-section__header p {
+  max-width: 42rem;
+}
+
+.features-section__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.features-section__card,
+.features-section__copy-block,
+.features-section__preview-list,
+.features-section__chart {
+  display: grid;
+  gap: 1rem;
+}
+
+.features-section__card {
+  padding: 1.4rem;
+}
+
+.features-section__card-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.features-section__preview-item {
+  display: flex;
+  gap: 0.85rem;
+  align-items: center;
+  padding: 0.9rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(140, 167, 201, 0.16);
+}
+
+.features-section__preview-accent {
+  width: 0.35rem;
+  align-self: stretch;
+  border-radius: 999px;
+  background: var(--pf-color-primary);
+}
+
+.features-section__preview-item strong {
+  color: var(--pf-color-heading);
+}
+
+.features-section__preview-item p,
+.features-section__chart-labels {
+  font-size: 0.84rem;
+}
+
+.features-section__preview-item--secondary .features-section__preview-accent {
+  background: var(--pf-color-secondary);
+}
+
+.features-section__preview-item--tertiary .features-section__preview-accent {
+  background: var(--pf-color-tertiary);
+}
+
+.features-section__chart {
+  align-content: end;
+}
+
+.features-section__chart-bars {
+  display: flex;
+  align-items: end;
+  gap: 0.6rem;
+  min-height: 8rem;
+}
+
+.features-section__chart-bar {
+  flex: 1;
+  min-width: 0;
+  border-radius: 1rem 1rem 0.6rem 0.6rem;
+  background: linear-gradient(180deg, rgba(124, 131, 255, 0.25), rgba(124, 131, 255, 0.65));
+}
+
+.features-section__chart-bar--active {
+  background: linear-gradient(180deg, rgba(59, 130, 246, 0.48), rgba(37, 99, 235, 0.94));
+}
+
+.features-section__chart-labels {
+  display: flex;
+  justify-content: space-between;
+  color: var(--pf-color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.features-section__icon-pill--primary {
+  color: var(--pf-color-primary-strong);
+}
+
+.features-section__icon-pill--secondary {
+  color: var(--pf-color-secondary);
+}
+
+.features-section__icon-pill--tertiary {
+  color: var(--pf-color-tertiary);
+}
+
+@media (max-width: 1080px) {
+  .features-section__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .features-section__grid {
+    grid-template-columns: 1fr;
+  }
+}

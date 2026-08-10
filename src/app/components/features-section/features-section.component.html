@@ -1,0 +1,61 @@
+<section id="features" class="features-section pf-section">
+  <div class="pf-section__inner">
+    <div class="pf-section__header features-section__header">
+      <span class="pf-eyebrow">{{ bundle().featuresSection.eyebrow }}</span>
+      <h2 class="pf-heading pf-heading--lg">{{ bundle().featuresSection.title }}</h2>
+      <p class="pf-copy">
+        {{ bundle().featuresSection.description }}
+      </p>
+    </div>
+
+    <div class="features-section__grid">
+      <article
+        *ngFor="let feature of bundle().features; trackBy: trackById"
+        class="pf-card features-section__card"
+        [class]="'pf-card features-section__card features-section__card--' + feature.accent"
+      >
+        <div class="features-section__card-topbar">
+          <span class="pf-icon-pill" [class]="'pf-icon-pill features-section__icon-pill--' + feature.accent">
+            <i [class]="feature.icon"></i>
+          </span>
+
+          <p-tag [rounded]="true" [severity]="resolveTagSeverity(feature.accent)" [value]="feature.supportingLabel"></p-tag>
+        </div>
+
+        <div class="features-section__copy-block">
+          <h3 class="pf-heading pf-heading--md">{{ feature.title }}</h3>
+          <p class="pf-copy">{{ feature.description }}</p>
+        </div>
+
+        <div *ngIf="feature.previewItems?.length" class="features-section__preview-list">
+          <div
+            *ngFor="let preview of feature.previewItems; trackBy: trackByPreview"
+            class="features-section__preview-item"
+            [class]="'features-section__preview-item features-section__preview-item--' + preview.accent"
+          >
+            <span class="features-section__preview-accent"></span>
+
+            <div>
+              <strong>{{ preview.title }}</strong>
+              <p>{{ preview.subtitle }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="feature.chartBars?.length" class="features-section__chart" aria-hidden="true">
+          <div class="features-section__chart-bars">
+            <span
+              *ngFor="let bar of feature.chartBars; let isActive = last"
+              class="features-section__chart-bar"
+              [class.features-section__chart-bar--active]="isActive"
+              [style.height.%]="bar"
+            ></span>
+          </div>
+          <div class="features-section__chart-labels">
+            <span *ngFor="let label of bundle().featuresSection.expenseLabels">{{ label }}</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

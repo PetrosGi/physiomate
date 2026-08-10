@@ -1,0 +1,27 @@
+<section id="benefits" class="benefits-section pf-section">
+  <div class="pf-section__inner">
+    <div class="pf-section__header benefits-section__header">
+      <span class="pf-eyebrow">{{ bundle().benefitsSection.eyebrow }}</span>
+      <h2 class="pf-heading pf-heading--lg">{{ bundle().benefitsSection.title }}</h2>
+      <p class="pf-copy">
+        {{ bundle().benefitsSection.description }}
+      </p>
+    </div>
+
+    <div class="benefits-section__grid">
+      <article *ngFor="let benefit of bundle().benefits; trackBy: trackById" class="pf-card benefits-section__card">
+        <div class="benefits-section__card-topbar">
+          <span class="pf-icon-pill" [class]="'benefits-section__icon-pill--' + benefit.accent">
+            <i [class]="benefit.icon"></i>
+          </span>
+          <p-tag [rounded]="true" [severity]="resolveTagSeverity(benefit.accent)" [value]="bundle().benefitsSection.builtInTag"></p-tag>
+        </div>
+
+        <div class="benefits-section__copy-block">
+          <h3 class="pf-heading pf-heading--md">{{ benefit.title }}</h3>
+          <p class="pf-copy">{{ benefit.description }}</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

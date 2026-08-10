@@ -1,0 +1,80 @@
+<section id="early-access" class="early-access-section pf-section">
+  <div class="pf-section__inner">
+    <div class="early-access-section__panel pf-card">
+      <div class="early-access-section__intro">
+        <span class="pf-eyebrow">{{ copy().section.eyebrow }}</span>
+        <h2 class="pf-heading pf-heading--lg">{{ copy().section.title }}</h2>
+        <p class="pf-copy">
+          {{ copy().section.description }}
+        </p>
+
+        <ul class="early-access-section__highlights">
+          <li *ngFor="let highlight of copy().highlights">
+            <span class="pf-icon-pill"><i class="pi pi-check"></i></span>
+            <span>{{ highlight }}</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="early-access-section__form-card">
+        <p-message
+          *ngIf="submissionResult()"
+          [severity]="submissionResult()?.success ? 'success' : 'error'"
+          [text]="submissionResult()?.message || ''"
+          styleClass="early-access-section__feedback"
+        ></p-message>
+
+        <form class="early-access-section__form" [formGroup]="form" (ngSubmit)="submitForm()" novalidate>
+          <div class="early-access-section__field-grid">
+            <div class="early-access-section__field">
+              <label for="fullName">{{ copy().fullNameLabel }}</label>
+              <input
+                id="fullName"
+                pInputText
+                type="text"
+                formControlName="fullName"
+                autocomplete="name"
+                [placeholder]="copy().fullNamePlaceholder"
+                [attr.aria-invalid]="isFieldInvalid('fullName')"
+              >
+              <p *ngIf="getFieldError('fullName')" class="pf-field-error">{{ getFieldError('fullName') }}</p>
+            </div>
+
+            <div class="early-access-section__field">
+              <label for="email">{{ copy().emailLabel }}</label>
+              <input
+                id="email"
+                pInputText
+                type="email"
+                formControlName="email"
+                autocomplete="email"
+                [placeholder]="copy().emailPlaceholder"
+                [attr.aria-invalid]="isFieldInvalid('email')"
+              >
+              <p *ngIf="getFieldError('email')" class="pf-field-error">{{ getFieldError('email') }}</p>
+            </div>
+          </div>
+
+          <div class="early-access-section__field">
+            <label for="message">{{ copy().messageLabel }}</label>
+            <textarea
+              id="message"
+              pInputTextarea
+              rows="4"
+              formControlName="message"
+              [placeholder]="copy().messagePlaceholder"
+              [autoResize]="true"
+              [attr.aria-invalid]="isFieldInvalid('message')"
+            ></textarea>
+            <p *ngIf="getFieldError('message')" class="pf-field-error">{{ getFieldError('message') }}</p>
+          </div>
+
+          <button pButton type="submit" [disabled]="isSubmitting()">
+            <i *ngIf="isSubmitting()" class="pi pi-spinner pi-spin"></i>
+            <span>{{ isSubmitting() ? copy().submitLoadingLabel : copy().submitIdleLabel }}</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

@@ -40,3 +40,7 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Local planning / AI working files
+/implementation_plan.md
+/memory-bank/

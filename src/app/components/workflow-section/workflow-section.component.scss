@@ -1,0 +1,108 @@
+:host {
+  display: block;
+}
+
+.workflow-section {
+  background: rgba(255, 255, 255, 0.66);
+}
+
+.workflow-section__header {
+  text-align: center;
+  justify-items: center;
+}
+
+.workflow-section__header p {
+  max-width: 40rem;
+}
+
+.workflow-section__timeline {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.workflow-section__timeline::before {
+  content: '';
+  position: absolute;
+  top: 3rem;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: rgba(140, 167, 201, 0.35);
+}
+
+.workflow-section__step {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.workflow-section__step-marker {
+  display: inline-grid;
+  place-items: center;
+  gap: 0.35rem;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  color: #fff;
+  background: linear-gradient(135deg, var(--pf-color-primary), var(--pf-color-primary-strong));
+  box-shadow: 0 20px 35px rgba(37, 99, 235, 0.18);
+  outline: 10px solid rgba(255, 255, 255, 0.95);
+}
+
+.workflow-section__step-marker i {
+  font-size: 1.25rem;
+}
+
+.workflow-section__step-number {
+  font-size: 0.85rem;
+  font-weight: 700;
+  opacity: 0.88;
+}
+
+.workflow-section__step--secondary .workflow-section__step-marker {
+  background: linear-gradient(135deg, #10b981, #0f9f6e);
+}
+
+.workflow-section__step--tertiary .workflow-section__step-marker {
+  background: linear-gradient(135deg, var(--pf-color-tertiary), #5d63f2);
+}
+
+.workflow-section__step-copy {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 21rem;
+}
+
+@media (max-width: 900px) {
+  .workflow-section__timeline {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .workflow-section__timeline::before {
+    top: 2rem;
+    bottom: 2rem;
+    left: 2rem;
+    right: auto;
+    width: 1px;
+    height: auto;
+  }
+
+  .workflow-section__step {
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    justify-items: start;
+    text-align: left;
+  }
+
+  .workflow-section__step-marker {
+    width: 4rem;
+    height: 4rem;
+    outline-width: 6px;
+  }
+}

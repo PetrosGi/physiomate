@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PhysioFlow | Streamlined Clinic Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#6ffbbe",
+                    "background": "#f8f9ff",
+                    "tertiary": "#3e3fcc",
+                    "on-primary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-secondary": "#ffffff",
+                    "inverse-primary": "#b4c5ff",
+                    "surface-container": "#e5eeff",
+                    "on-primary-fixed": "#00174b",
+                    "primary-fixed": "#dbe1ff",
+                    "on-secondary-fixed-variant": "#005236",
+                    "surface-bright": "#f8f9ff",
+                    "surface-container-highest": "#d3e4fe",
+                    "tertiary-fixed-dim": "#c0c1ff",
+                    "surface-container-low": "#eff4ff",
+                    "outline-variant": "#c3c6d7",
+                    "on-secondary-fixed": "#002113",
+                    "tertiary-container": "#585be6",
+                    "surface": "#f8f9ff",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#eeefff",
+                    "on-tertiary-fixed": "#07006c",
+                    "error": "#ba1a1a",
+                    "on-surface-variant": "#434655",
+                    "secondary-container": "#6cf8bb",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary": "#006c49",
+                    "secondary-fixed-dim": "#4edea3",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "inverse-surface": "#213145",
+                    "primary-container": "#2563eb",
+                    "on-tertiary-container": "#f1eeff",
+                    "primary": "#004ac6",
+                    "tertiary-fixed": "#e1e0ff",
+                    "on-tertiary-fixed-variant": "#2f2ebe",
+                    "on-error-container": "#93000a",
+                    "surface-tint": "#0053db",
+                    "outline": "#737686",
+                    "surface-variant": "#d3e4fe",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-error": "#ffffff",
+                    "surface-container-high": "#dce9ff",
+                    "on-background": "#0b1c30",
+                    "on-secondary-container": "#00714d",
+                    "surface-dim": "#cbdbf5",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "on-surface": "#0b1c30"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "xl": "64px",
+                    "container-max": "1440px",
+                    "base": "8px",
+                    "gutter": "24px",
+                    "md": "24px",
+                    "xs": "4px",
+                    "lg": "48px",
+                    "sm": "12px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Manrope"],
+                    "body-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-md": ["Manrope"],
+                    "headline-lg-mobile": ["Manrope"],
+                    "body-lg": ["Inter"],
+                    "headline-xl": ["Manrope"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .ambient-glow {
+            box-shadow: 0 15px 35px -5px rgba(0, 74, 198, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Navigation -->
+<header class="w-full sticky top-0 z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-md border-b border-outline-variant/30 transition-all duration-200">
+<nav class="flex justify-between items-center px-8 py-4 max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">PhysioFlow</div>
+<div class="hidden md:flex items-center gap-xl">
+<a class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1 transition-all duration-200 active:scale-95" href="#home">Home</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors transition-all duration-200 active:scale-95" href="#features">Features</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors transition-all duration-200 active:scale-95" href="#early-access">Early Access</a>
+</div>
+<button class="bg-primary-container text-on-primary-container px-6 py-2.5 rounded-full font-label-md text-label-md transition-all duration-200 active:scale-95 hover:shadow-lg">
+                Get Started
+            </button>
+</nav>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative overflow-hidden pt-xl pb-24 md:pt-32" id="home">
+<div class="max-w-container-max mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-lg items-center">
+<div class="z-10 text-center lg:text-left">
+<h1 class="font-headline-xl text-headline-xl text-on-background mb-6 leading-tight">
+                        PhysioFlow: Streamlined clinic management, anywhere you go.
+                    </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-xl mx-auto lg:mx-0">
+                        The all-in-one platform designed for modern physiotherapy practitioners. Track patient progress, manage schedules, and optimize clinic finances with calm control.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+<a class="inline-flex items-center justify-center bg-primary text-on-primary px-8 py-4 rounded-xl font-label-md text-label-md transition-all duration-200 hover:scale-[1.02] active:scale-95 shadow-md" href="#early-access">
+                            Request Early Access
+                        </a>
+<button class="inline-flex items-center justify-center border border-primary text-primary px-8 py-4 rounded-xl font-label-md text-label-md transition-all duration-200 hover:bg-primary/5 active:scale-95">
+                            View Demo
+                        </button>
+</div>
+</div>
+<div class="relative mt-16 lg:mt-0">
+<!-- Tech Illustration Placeholder -->
+<div class="relative z-10 w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-outline-variant/30 bg-surface-container-lowest">
+<img class="w-full h-full object-cover" data-alt="A professional high-fidelity UI mockup of a physiotherapy management dashboard displayed on a sleek tablet and desktop monitor. The interface features a clean, white and soft blue color palette with elegant data visualizations, patient schedule calendars, and performance charts. The lighting is soft and natural, suggesting a modern, well-lit clinic environment. The overall aesthetic is minimalist, airy, and highly organized to evoke a sense of professional reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBihjDdwyAljdok6gLSl5MS9PHaXrb6-zmd2_JfUB-kxcF7EC9DDqXcwWXAutAAwt_0PS29JWpk2PzxHdXgxG6dNwt4-LncO9Vy0IEnyanLKFoUWah8Q7v8vnLz89oDi3KHS-1VgoS8AL-w58klMz0UYAGSPdLkIR153OvwJw0NIF9pCTW6ZtMChQZown675ststS0aT7k8KG_jMYGWCllfkm5_XL0Zi8PAz9uMMbDXRjPTjdwFbYRB_Cvy9bb1ka0YU7jd_QQKxWQ"/>
+</div>
+<!-- Decorative elements -->
+<div class="absolute -top-12 -right-12 w-64 h-64 bg-secondary-container/20 rounded-full blur-3xl -z-10"></div>
+<div class="absolute -bottom-12 -left-12 w-80 h-80 bg-primary-container/10 rounded-full blur-3xl -z-10"></div>
+</div>
+</div>
+</section>
+<!-- Features Section -->
+<section class="bg-surface-container-low py-xl md:py-32" id="features">
+<div class="max-w-container-max mx-auto px-8">
+<div class="text-center mb-16 md:mb-24">
+<h2 class="font-headline-xl text-headline-xl text-on-background mb-4">Management Made Simple</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                        Tools designed to let you focus on what matters most: patient recovery and clinical excellence.
+                    </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Feature 1: Calendar -->
+<div class="glass-card p-8 rounded-xl ambient-glow transition-transform hover:-translate-y-1 duration-300">
+<div class="flex justify-between items-start mb-6">
+<div class="p-3 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant" title="Tablet friendly">tablet_mac</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4 text-on-background">Calendar &amp; Appointments</h3>
+<div class="space-y-3 mt-8">
+<div class="flex items-center gap-3 p-3 bg-white rounded-lg border border-outline-variant/20 shadow-sm">
+<div class="w-1.5 h-8 bg-primary rounded-full"></div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Post-Op Rehab</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">09:00 AM - Sarah J.</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 bg-white rounded-lg border border-outline-variant/20 shadow-sm">
+<div class="w-1.5 h-8 bg-secondary-fixed-dim rounded-full"></div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Initial Assessment</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">10:30 AM - Mike R.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Feature 2: Patients -->
+<div class="glass-card p-8 rounded-xl ambient-glow transition-transform hover:-translate-y-1 duration-300">
+<div class="flex justify-between items-start mb-6">
+<div class="p-3 bg-secondary/10 rounded-lg text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant" title="Mobile responsive">smartphone</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4 text-on-background">Patient Management</h3>
+<div class="space-y-4 mt-8">
+<div class="flex items-center justify-between p-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center font-bold text-on-surface">JD</div>
+<p class="font-label-md text-label-md text-on-surface">Jane Doe</p>
+</div>
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-xs font-semibold rounded-full uppercase tracking-wider">Active</span>
+</div>
+<div class="w-full h-px bg-outline-variant/20"></div>
+<div class="flex items-center justify-between p-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center font-bold text-on-surface">TS</div>
+<p class="font-label-md text-label-md text-on-surface">Tom Smith</p>
+</div>
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-xs font-semibold rounded-full uppercase tracking-wider">Pending</span>
+</div>
+</div>
+</div>
+<!-- Feature 3: Expense Tracking -->
+<div class="glass-card p-8 rounded-xl ambient-glow transition-transform hover:-translate-y-1 duration-300">
+<div class="flex justify-between items-start mb-6">
+<div class="p-3 bg-tertiary/10 rounded-lg text-tertiary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">payments</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant" title="Cross-platform">devices</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4 text-on-background">Expense Tracking</h3>
+<div class="mt-8">
+<div class="flex items-end gap-2 h-32 justify-between">
+<div class="w-1/4 bg-primary-fixed-dim rounded-t-lg transition-all hover:bg-primary-container" style="height: 60%"></div>
+<div class="w-1/4 bg-primary-fixed-dim rounded-t-lg transition-all hover:bg-primary-container" style="height: 45%"></div>
+<div class="w-1/4 bg-primary-container rounded-t-lg transition-all" style="height: 85%"></div>
+<div class="w-1/4 bg-primary-fixed-dim rounded-t-lg transition-all hover:bg-primary-container" style="height: 55%"></div>
+</div>
+<div class="flex justify-between mt-2 text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">
+<span>May</span><span>Jun</span><span>Jul</span><span>Aug</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Workflow Section -->
+<section class="py-xl md:py-32 bg-white overflow-hidden" id="workflow">
+<div class="max-w-container-max mx-auto px-8">
+<div class="text-center mb-16 md:mb-24">
+<h2 class="font-headline-xl text-headline-xl text-on-background mb-4">Your Workflow, Optimized</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                        Experience a seamless transition between patient interaction and administrative tasks.
+                    </p>
+</div>
+<div class="relative">
+<!-- Connector Line (Desktop) -->
+<div class="hidden lg:block absolute top-1/2 left-0 w-full h-px bg-outline-variant/30 -translate-y-1/2 z-0"></div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-12 relative z-10">
+<!-- Step 1 -->
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-on-primary shadow-lg mb-8 outline outline-8 outline-white">
+<span class="material-symbols-outlined text-3xl">clinical_notes</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-background mb-3">Capture &amp; Assess</h3>
+<p class="font-body-md text-body-md text-on-surface-variant px-4">
+                            Seamless initial intake and assessment forms that flow directly into patient records.
+                        </p>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center text-on-primary shadow-lg mb-8 outline outline-8 outline-white">
+<span class="material-symbols-outlined text-3xl">exercise</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-background mb-3">Treat &amp; Track</h3>
+<p class="font-body-md text-body-md text-on-surface-variant px-4">
+                            Log progress notes and assign tailored exercise programs with real-time tracking.
+                        </p>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 bg-tertiary rounded-full flex items-center justify-center text-on-primary shadow-lg mb-8 outline outline-8 outline-white">
+<span class="material-symbols-outlined text-3xl">trending_up</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-background mb-3">Analyze &amp; Scale</h3>
+<p class="font-body-md text-body-md text-on-surface-variant px-4">
+                            Automated insights into clinic performance to help you scale your practice effectively.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Trust / Benefits Section -->
+<section class="bg-surface-container-low py-xl md:py-32" id="benefits">
+<div class="max-w-container-max mx-auto px-8">
+<div class="text-center mb-16 md:mb-24">
+<h2 class="font-headline-xl text-headline-xl text-on-background mb-4">Why Practitioners Choose PhysioFlow</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                        Built on a foundation of security and reliability so you can practice with peace of mind.
+                    </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Benefit 1 -->
+<div class="glass-card p-8 rounded-xl ambient-glow">
+<div class="p-3 bg-secondary/10 rounded-lg text-secondary w-fit mb-6">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3 text-on-background">HIPAA Compliance</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        Enterprise-grade security and data encryption to keep sensitive patient information fully protected.
+                    </p>
+</div>
+<!-- Benefit 2 -->
+<div class="glass-card p-8 rounded-xl ambient-glow">
+<div class="p-3 bg-primary/10 rounded-lg text-primary w-fit mb-6">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">cloud_done</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3 text-on-background">Cloud Sync</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        Access your clinic from any device. All changes sync instantly across your mobile, tablet, and desktop.
+                    </p>
+</div>
+<!-- Benefit 3 -->
+<div class="glass-card p-8 rounded-xl ambient-glow">
+<div class="p-3 bg-tertiary/10 rounded-lg text-tertiary w-fit mb-6">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">signal_wifi_off</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3 text-on-background">Offline Mode</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        Continue working even without internet. Your data will automatically sync as soon as you're back online.
+                    </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Early Access Form -->
+<section class="py-xl md:py-32 bg-white" id="early-access">
+<div class="max-w-3xl mx-auto px-8">
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-3xl p-8 md:p-16 shadow-xl relative overflow-hidden">
+<div class="absolute top-0 right-0 p-8 opacity-5">
+<span class="material-symbols-outlined text-[120px]">mark_email_read</span>
+</div>
+<div class="relative z-10">
+<h2 class="font-headline-lg text-headline-lg text-on-background mb-4">Be the first to know</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-10">
+                            We're currently in private beta. Sign up to get updates and be among the first to experience the future of clinic management.
+                        </p>
+<form class="space-y-6" onsubmit="event.preventDefault(); alert('Success! We will be in touch soon.');">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface ml-1">Full Name</label>
+<input class="w-full px-5 py-3 rounded-xl border border-outline-variant bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all" placeholder="John Doe" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface ml-1">Email Address</label>
+<input class="w-full px-5 py-3 rounded-xl border border-outline-variant bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all" placeholder="john@clinic.com" type="email"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface ml-1">Message (Optional)</label>
+<textarea class="w-full px-5 py-3 rounded-xl border border-outline-variant bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all" placeholder="Tell us about your clinic..." rows="3"></textarea>
+</div>
+<button class="w-full bg-primary text-on-primary py-4 rounded-xl font-label-md text-label-md transition-all duration-200 hover:brightness-110 active:scale-[0.98] shadow-lg shadow-primary/20" type="submit">
+                                Get updates when we launch
+                            </button>
+</form>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-lg bg-surface-container-lowest dark:bg-inverse-surface border-t border-outline-variant/20">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 max-w-container-max mx-auto gap-md">
+<div class="flex flex-col items-center md:items-start gap-2">
+<div class="font-headline-sm text-headline-sm font-bold text-on-surface">PhysioFlow</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">© 2024 PhysioFlow Management. All rights reserved.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">Contact Support</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors opacity-80 hover:opacity-100 font-bold" href="#">LinkedIn</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple scroll interaction for header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-md', 'py-3');
+                header.classList.remove('py-4');
+            } else {
+                header.classList.remove('shadow-md', 'py-3');
+                header.classList.add('py-4');
+            }
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.glass-card').forEach(el => {
+            el.classList.add('opacity-0', 'translate-y-10', 'transition-all', 'duration-700');
+            observer.observe(el);
+        });
+    </script>
+</body></html>

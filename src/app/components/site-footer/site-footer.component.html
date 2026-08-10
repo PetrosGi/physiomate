@@ -1,0 +1,16 @@
+<footer class="site-footer">
+  <div class="site-footer__inner pf-section__inner">
+    <div class="site-footer__brand-block">
+      <div class="site-footer__brand">
+        <span class="site-footer__brand-mark"><i class="pi pi-heart-fill"></i></span>
+        <span>{{ bundle().brandName }}</span>
+      </div>
+
+      <p class="pf-copy">© {{ currentYear }} {{ bundle().brandName }}. {{ bundle().footer.supportingCopy }}</p>
+    </div>
+
+    <nav class="site-footer__links" [attr.aria-label]="bundle().footer.navigationAriaLabel">
+      <a *ngFor="let link of bundle().footerLinks; trackBy: trackByLabel" [href]="link.href">{{ link.label }}</a>
+    </nav>
+  </div>
+</footer>

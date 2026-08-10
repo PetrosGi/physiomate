@@ -1,0 +1,113 @@
+<section id="home" class="hero-section pf-section">
+  <div class="pf-section__inner hero-section__layout">
+    <div class="hero-section__content">
+      <span *ngIf="bundle().hero.eyebrow" class="pf-eyebrow">{{ bundle().hero.eyebrow }}</span>
+
+      <div class="hero-section__copy">
+        <h1 class="pf-heading pf-heading--xl">{{ bundle().hero.title }}</h1>
+        <p class="pf-copy hero-section__description">{{ bundle().hero.description }}</p>
+      </div>
+
+      <div class="pf-action-row hero-section__actions">
+        <button pButton type="button" (click)="scrollToSection('early-access')">
+          {{ bundle().hero.primaryCtaLabel }}
+        </button>
+        <button pButton type="button" class="p-button-outlined" (click)="scrollToSection('features')">
+          {{ bundle().hero.secondaryCtaLabel }}
+        </button>
+      </div>
+
+      <div class="hero-section__microproof">
+        <div class="hero-section__proof-card pf-card">
+          <span class="pf-icon-pill"><i class="pi pi-tablet"></i></span>
+          <div>
+            <strong>{{ bundle().heroPanel.proofTitle }}</strong>
+            <p>{{ bundle().heroPanel.proofDescription }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-section__visual">
+      <div class="hero-section__dashboard pf-card">
+        <div class="hero-section__dashboard-topbar">
+          <div>
+            <p class="hero-section__panel-label">{{ bundle().heroPanel.dashboardEyebrow }}</p>
+            <h2 class="pf-heading pf-heading--md">{{ bundle().heroPanel.dashboardTitle }}</h2>
+          </div>
+          <p-tag severity="info" [value]="bundle().heroPanel.livePreviewTag"></p-tag>
+        </div>
+
+        <div class="hero-section__dashboard-grid">
+          <article class="hero-section__panel hero-section__panel--schedule">
+            <div class="hero-section__panel-heading">
+              <span class="pf-icon-pill hero-section__icon-pill hero-section__icon-pill--primary">
+                <i class="pi pi-calendar"></i>
+              </span>
+              <div>
+                <h3 class="pf-heading pf-heading--md">{{ bundle().heroPanel.scheduleTitle }}</h3>
+                <p class="pf-copy">{{ bundle().heroPanel.scheduleDescription }}</p>
+              </div>
+            </div>
+
+            <div class="hero-section__appointment-list">
+              <div
+                *ngFor="let item of bundle().heroPanel.schedulePreview"
+                class="hero-section__appointment"
+                [class]="'hero-section__appointment hero-section__appointment--' + item.accent"
+              >
+                <span class="hero-section__appointment-accent"></span>
+                <div>
+                  <strong>{{ item.title }}</strong>
+                  <p>{{ item.subtitle }}</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="hero-section__panel hero-section__panel--progress">
+            <div class="hero-section__panel-heading">
+              <span class="pf-icon-pill hero-section__icon-pill hero-section__icon-pill--secondary">
+                <i class="pi pi-users"></i>
+              </span>
+              <div>
+                <h3 class="pf-heading pf-heading--md">{{ bundle().heroPanel.patientHubTitle }}</h3>
+                <p class="pf-copy">{{ bundle().heroPanel.patientHubDescription }}</p>
+              </div>
+            </div>
+
+            <div class="hero-section__signal-list">
+              <p-tag
+                *ngFor="let signal of bundle().heroPanel.progressSignals"
+                [rounded]="true"
+                severity="success"
+                [value]="signal"
+              ></p-tag>
+            </div>
+          </article>
+
+          <article class="hero-section__panel hero-section__panel--finance">
+            <div class="hero-section__panel-heading">
+              <span class="pf-icon-pill hero-section__icon-pill hero-section__icon-pill--tertiary">
+                <i class="pi pi-chart-bar"></i>
+              </span>
+              <div>
+                <h3 class="pf-heading pf-heading--md">{{ bundle().heroPanel.operationsTitle }}</h3>
+                <p class="pf-copy">{{ bundle().heroPanel.operationsDescription }}</p>
+              </div>
+            </div>
+
+            <div class="hero-section__bars" aria-hidden="true">
+              <span
+                *ngFor="let bar of financeBars; let isActive = last"
+                class="hero-section__bar"
+                [class.hero-section__bar--active]="isActive"
+                [style.height.%]="bar"
+              ></span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
