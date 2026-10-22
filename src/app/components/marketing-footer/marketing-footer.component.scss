@@ -1,0 +1,7 @@
+:host { display: block; }
+.marketing-footer { background: #0e1a30; color: #dce5fa; padding: 4.5rem 0 1.4rem; }
+.marketing-footer__grid { display: grid; grid-template-columns: 1.45fr repeat(3, 1fr); gap: 3rem; }
+.marketing-footer__brand { display: inline-flex; color: #fff; font-size: 1.15rem; font-weight: 800; }.marketing-footer p { max-width: 13rem; color: #9baac7; line-height: 1.6; }.marketing-footer__social { display: flex; gap: .9rem; margin-top: 1rem; color: #9baac7; font-size: 1.1rem; }
+.marketing-footer h2 { margin: 0 0 1rem; color: #8799bd; font-size: .68rem; letter-spacing: .14em; }.marketing-footer a { display: block; width: fit-content; margin: .65rem 0; color: #dce5fa; font-size: .86rem; }
+.marketing-footer__bottom { display: flex; justify-content: space-between; gap: 1rem; margin-top: 3.4rem; padding-top: 1.4rem; border-top: 1px solid rgba(220, 229, 250, .12); color: #8799bd; font-size: .75rem; }
+@media (max-width: 700px) { .marketing-footer__grid { grid-template-columns: 1fr 1fr; gap: 2rem; }.marketing-footer__grid > :first-child { grid-column: 1 / -1; }.marketing-footer__bottom { flex-direction: column; } }

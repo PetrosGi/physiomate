@@ -1,0 +1,15 @@
+<header class="marketing-header">
+  <div class="marketing-container marketing-header__inner">
+    <a class="marketing-brand" routerLink="/" (click)="menuOpen.set(false)"><img src="/assets/logo/PHYSIOMATE BRAND DELIVERABLES_LOGO BLACK.png" alt="Physiomate"></a>
+    <button class="marketing-header__toggle" type="button" (click)="toggleMenu()" [attr.aria-expanded]="menuOpen()">Μενού</button>
+    <nav class="marketing-header__nav" [class.marketing-header__nav--open]="menuOpen()" aria-label="Κύρια πλοήγηση">
+      <a routerLink="/physiomate" routerLinkActive="is-active" (click)="menuOpen.set(false)">Physiomate</a>
+      <a routerLink="/pricing" routerLinkActive="is-active" (click)="menuOpen.set(false)">Τιμές</a>
+      <a routerLink="/vision" routerLinkActive="is-active" (click)="menuOpen.set(false)">Το όραμά μας</a>
+      <a routerLink="/resources" routerLinkActive="is-active" (click)="menuOpen.set(false)">Πόροι</a>
+      <a routerLink="/contact" routerLinkActive="is-active" (click)="menuOpen.set(false)">Επικοινωνία</a>
+      <a class="marketing-header__login" href="https://physiomate.gr/">Σύνδεση</a>
+      <a class="marketing-button marketing-button--primary" routerLink="/contact" (click)="menuOpen.set(false)">Ξεκίνα δωρεάν</a>
+    </nav>
+  </div>
+</header>
